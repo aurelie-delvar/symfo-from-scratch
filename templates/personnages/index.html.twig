@@ -3,9 +3,51 @@
 {% block title %}Hello les zamis !{% endblock %}
 
 {% block body %}
-    <ul>
+
+<table class="border-collapse border border-slate-400 table-auto">
+    <thead>
+        <tr>
+         <th colspan="12">Liste des personnages</th>
+        </tr>
+        <tr>
+         <th class="border border-slate-300">Nom</th>
+         <th class="border border-slate-300">Prenom</th>
+         <th class="border border-slate-300">Surnom</th>
+         <th class="border border-slate-300">Type</th>
+         <th class="border border-slate-300">BFF</th>
+         <th class="border border-slate-300" colspan="3">Qualités</th>
+         <th class="border border-slate-300">Image</th>
+        <tr>
+    </thead>
+    <tbody>
     {% for perso in persos %}
-        <li>Liste des persos :</li>
+        <tr>
+         <a href="{{ path('app_show', {"id" : perso.id}) }}">
+            <td class="border border-slate-300">{{ perso.nom }}</td>
+            <td class="border border-slate-300">{{ perso.prenom }}</td>
+            <td class="border border-slate-300">{{ perso.surnom }}</td>
+            <td class="border border-slate-300">{{ perso.typeId.name }}</td>
+            <td class="border border-slate-300">{{ perso.amibff.name }}</td>
+            <td>
+            <ol>          
+            {% for qualite in perso.qualites %}
+                <li>
+                {{ qualite.adjectif }}
+                </li>
+            {% endfor %}
+            </ol>
+            </td>
+            <td><img class="h-40 object-cover" src="{{ perso.image }}" ></td>
+         </a>
+        </tr>
+
+    {% endfor %}
+    </tbody>
+</table>
+
+    {# <ul>
+    {% for perso in persos %}
+            <a href="{{ path('app_show', {"id" : perso.id}) }}">
         <li>Nom : {{ perso.nom }}</li>
         <li>Prénom : {{ perso.prenom }} </li>
         <li>Surnom : {{ perso.surnom }}</li>
@@ -15,7 +57,9 @@
             {% for qualite in perso.qualites %}
                 <li>Qualités : {{ qualite.adjectif }}</li>
             {% endfor %}
-        <li>Image : <img src="{{ perso.image }}" ></li>
+        <li>Image : <img class="h-40 object-cover" src="{{ perso.image }}" ></li>
+            </a>
     {% endfor %}
-    </ul>
+    </ul> #}
+
 {% endblock %}

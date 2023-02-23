@@ -20,4 +20,18 @@ class PersonnagesController extends AbstractController
             'persos' => $persos,
         ]);
     }
+
+    /**
+     * Route pour afficher un perso
+     *
+     * @Route("/perso/{id}", name="app_show", requirements={"id" = "\d+"})
+     */
+    public function show($id, PersonnagesRepository $persorepo) : Response 
+    {
+        $persoso = $persorepo->find($id);
+
+        return $this->render('personnages/show.html.twig', [
+            'persoso' => $persoso,
+        ]);
+    }
 }

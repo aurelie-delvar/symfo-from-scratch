@@ -1,7 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
+        {# <script src="https://cdn.tailwindcss.com"></script> #}
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+
         <title>{% block title %}Welcome!{% endblock %}</title>
     </head>
     <body>
