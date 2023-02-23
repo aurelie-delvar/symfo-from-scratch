@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello les zamis !{% endblock %}
+
+{% block body %}
+    <ul>
+    {% for perso in persos %}
+        <li>Liste des persos :</li>
+        <li>Nom : {{ perso.nom }}</li>
+        <li>Prénom : {{ perso.prenom }} </li>
+        <li>Surnom : {{ perso.surnom }}</li>
+        <li>Type : {{ perso.typeId.name }}</li>
+        <li>BFF : {{ perso.amibff.name }}</li>
+
+            {% for qualite in perso.qualites %}
+                <li>Qualités : {{ qualite.adjectif }}</li>
+            {% endfor %}
+        <li>Image : <img src="{{ perso.image }}" ></li>
+    {% endfor %}
+    </ul>
+{% endblock %}
