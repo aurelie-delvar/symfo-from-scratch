@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Personnages;
+use App\Form\PersonnagesType;
 use App\Repository\PersonnagesRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PersonnagesController extends AbstractController
 {
@@ -32,6 +35,29 @@ class PersonnagesController extends AbstractController
 
         return $this->render('personnages/show.html.twig', [
             'persoso' => $persoso,
+        ]);
+    }
+
+    /**
+     * Route pour ajouter un perso
+     * 
+     * @Route("/perso/nouveau", name="app_new")
+     */
+    public function new(Request $request, PersonnagesRepository $personnagesRepository) : Response
+    {
+        $perso = new Personnages();
+        $form = $this->createForm(PersonnagesType::class, $perso);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $personnagesRepository->add($perso, true);
+
+            return $this->redirectToRoute('app_personnages');
+        }
+
+        return $this->renderForm('personnages/new.html.twig', [
+            'form' => $form,
+            'perso' => $perso,
         ]);
     }
 }

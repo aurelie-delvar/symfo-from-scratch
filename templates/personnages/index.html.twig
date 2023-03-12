@@ -56,7 +56,13 @@
             <div class="card-body">
             <h5 class="card-title">{{ perso.prenom ~ ' ' ~ perso.nom }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{ perso.surnom }}</h6>
-            <p class="card-text">Je suis un {{ perso.typeId.name ~ ' et mon poto sur c\'est ' ~ perso.amibff.name }}</p>
+            <p class="card-text">Je suis un {{ perso.typeId.name ~ ' et mon poto sur c\'est '}}
+            {% if (perso.amibff is same as(null)) %}
+               {{ "N'a pas d'amis" }}
+            {% else %}
+                {{ perso.amibff.name }}
+            {% endif %}
+            </p>
             <a href="{{ path('app_show', {"id" : perso.id}) }}" class="btn mr-2"><i class="fas fa-link"></i> Voir la fiche</a>
             {# <a href="#" class="btn "><i class="fab fa-github"></i> Github</a> #}
             </div>

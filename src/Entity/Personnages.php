@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\PersonnagesRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PersonnagesRepository::class)
@@ -22,6 +24,7 @@ class Personnages
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      * 
      * @Groups("browse_persos")
      */
@@ -29,6 +32,7 @@ class Personnages
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @NotBlank
      * 
      * @Groups("browse_persos")
      */
@@ -41,12 +45,17 @@ class Personnages
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Url(
+        message= "The url {{ value }} is not a valid url"
+    )
      */
     private $image;
 
     /**
      * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="personnages")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank
      */
     private $typeId;
 
@@ -58,6 +67,8 @@ class Personnages
 
     /**
      * @ORM\ManyToMany(targetEntity=Qualidad::class, inversedBy="personnages")
+     * @Assert\NotBlank(
+     *  message = "Ce champ ne peut être vide" )
      */
     private $qualites;
 
