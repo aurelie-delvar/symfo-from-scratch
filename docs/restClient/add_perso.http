@@ -1,0 +1,10 @@
+POST http://localhost:8001/api/personnages
+content-type: application/json
+
+{
+    "prenom" : "Loch",
+    "nom" : "Ness",
+    "image" : "http://nessi.png",
+    "typeId" : 3,
+    "amibff" : null
+}

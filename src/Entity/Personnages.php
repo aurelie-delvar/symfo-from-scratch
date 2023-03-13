@@ -47,7 +47,7 @@ class Personnages
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      * @Assert\Url(
-        message= "The url {{ value }} is not a valid url"
+        message = "The url {{ value }} is not a valid url"
     )
      */
     private $image;

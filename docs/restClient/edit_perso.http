@@ -1,0 +1,11 @@
+PUT http://localhost:8001/api/personnages/10
+content-type: application/json
+
+{
+    "prenom" : "Sara",
+    "nom" : "Ravencrofte",
+    "image" : "http://raven.png",
+    "typeId" : 3,
+    "amibff" : null
+
+}

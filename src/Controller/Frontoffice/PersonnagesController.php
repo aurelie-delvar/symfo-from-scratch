@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Frontoffice;
 
 use App\Entity\Personnages;
 use App\Form\PersonnagesType;
