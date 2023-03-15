@@ -3,5 +3,22 @@
 {% block title %}{{ persoso.prenom }}{% endblock %}
 
 {% block body %}
-    <h1 class="text-center text-5xl font-semibold">La page de {{ persoso.prenom }} {{ persoso.nom }}</h1>
+
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+
+        <div class="col-8" style="border:1px solid red">
+            <h1> {{ persoso.prenom }} {{ persoso.nom }} </h1>
+        </div>
+
+        <div class="col-4" style="border:1px solid red">
+            <figure class="figure">
+                <img src="{{ asset('docs/img/' ~ persoso.image) }}" class="figure-img img-fluid rounded" alt="...">
+                <figcaption class="figure-caption">A caption for the above image.</figcaption>
+            </figure>
+        </div>
+
+        </div>
+    </div>
+
 {% endblock %}

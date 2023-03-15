@@ -60,17 +60,16 @@ class Personnages
     private $typeId;
 
     /**
-     * @ORM\OneToOne(targetEntity=Amis::class, inversedBy="perso", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $amibff;
-
-    /**
      * @ORM\ManyToMany(targetEntity=Qualidad::class, inversedBy="personnages")
      * @Assert\NotBlank(
      *  message = "Ce champ ne peut être vide" )
      */
     private $qualites;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Amis::class, inversedBy="perso")
+     */
+    private $amibff;
 
     public function __construct()
     {
@@ -142,18 +141,6 @@ class Personnages
         return $this;
     }
 
-    public function getAmibff(): ?Amis
-    {
-        return $this->amibff;
-    }
-
-    public function setAmibff(Amis $amibff): self
-    {
-        $this->amibff = $amibff;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Qualidad>
      */
@@ -174,6 +161,18 @@ class Personnages
     public function removeQualite(Qualidad $qualite): self
     {
         $this->qualites->removeElement($qualite);
+
+        return $this;
+    }
+
+    public function getAmibff(): ?Amis
+    {
+        return $this->amibff;
+    }
+
+    public function setAmibff(?Amis $amibff): self
+    {
+        $this->amibff = $amibff;
 
         return $this;
     }

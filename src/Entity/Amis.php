@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AmisRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,9 +25,14 @@ class Amis
     private $name;
 
     /**
-     * @ORM\OneToOne(targetEntity=Personnages::class, mappedBy="amibff", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity=Personnages::class, mappedBy="amibff")
      */
     private $perso;
+
+    public function __construct()
+    {
+        $this->perso = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -44,20 +51,34 @@ class Amis
         return $this;
     }
 
-    public function getPerso(): ?Personnages
+    /**
+     * @return Collection<int, Personnages>
+     */
+    public function getPersobff(): Collection
     {
         return $this->perso;
     }
 
-    public function setPerso(Personnages $perso): self
+    public function addPersobff(Personnages $perso): self
     {
-        // set the owning side of the relation if necessary
-        if ($perso->getAmibff() !== $this) {
+        if (!$this->perso->contains($perso)) {
+            $this->perso[] = $perso;
             $perso->setAmibff($this);
         }
 
-        $this->perso = $perso;
+        return $this;
+    }
+
+    public function removePersobff(Personnages $perso): self
+    {
+        if ($this->perso->removeElement($perso)) {
+            // set the owning side to null (unless already changed)
+            if ($perso->getAmibff() === $this) {
+                $perso->setAmibff(null);
+            }
+        }
 
         return $this;
     }
+
 }

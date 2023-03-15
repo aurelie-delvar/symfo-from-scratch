@@ -132,12 +132,12 @@ class PersonnagesController extends AbstractController
 
     }
 
-    /**
-     * @Route()
-     *
-     */
-    public function delete()
-    {
+    // /**
+    //  * @Route()
+    //  *
+    //  */
+    // public function delete()
+    // {
 
-    }
+    // }
 }
