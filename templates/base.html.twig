@@ -14,7 +14,11 @@
     <div class="container">
 
     <nav>
-        <a href="{{ path('app_personnages') }}"><img src="{{ asset('docs/img/logo.png') }}" class="logo" /></a>
+        {% if (app.request.pathInfo) starts with '/backoffice' %} 
+         <a href="{{ path('app_backoffice_personnages_index') }}"><img src="{{ asset('docs/img/logo.png') }}" class="logo" /></a>
+        {% else %}
+         <a href="{{ path('app_personnages') }}"><img src="{{ asset('docs/img/logo.png') }}" class="logo" /></a>
+        {% endif %}
 
         <ul class="nav justify-content-center">
             <li class="nav-item">
