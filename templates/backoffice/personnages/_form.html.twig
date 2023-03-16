@@ -1,0 +1,38 @@
+{{ form_start(form) }}
+
+<div class="row">
+    <div class="col">
+    {{ form_row(form.nom) }}
+    </div>
+    <div class="col">
+    {{ form_row(form.prenom) }}
+    </div>
+    <div class="col">
+    {{ form_row(form.surnom) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+    {{ form_row(form.image) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+    {{ form_row(form.phrase) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+    {{ form_row(form.typeId) }}
+    </div>
+    <div class="col">
+    {{ form_row(form.qualites) }}
+    </div>
+</div>
+
+ <button class="btn btn-info mb-3">{{ button_label|default('Sauvegarder') }}</button>
+  
+{{ form_end(form) }}

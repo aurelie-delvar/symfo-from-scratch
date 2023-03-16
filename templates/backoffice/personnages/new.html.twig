@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Un nouveau copain !{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un personnage</h1>
+
+    {{ include('backoffice/personnages/_form.html.twig') }}
+
+    <a href="{{ path('app_backoffice_personnages_index') }}" class="btn btn-info" >Retour à l'accueil</a>
+{% endblock %}
