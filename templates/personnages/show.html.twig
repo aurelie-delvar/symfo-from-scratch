@@ -7,15 +7,44 @@
     <div class="container">
         <div class="row justify-content-center mt-5">
 
-        <div class="col-8" style="border:1px solid red">
-            <h1> {{ persoso.prenom }} {{ persoso.nom }} </h1>
+        <div class="col-8">
+            <p class="h1 text-left"> {{ persoso.prenom }} {{ persoso.nom }} </p>
+            <p class="text-left">Scooby Doo est un chien de race dogue allemand. Il est toujours accompagné de Sammy, et même s'ils sont les moins courageux de la bande, ils ne refusent jamais une mission s'il y a un Crock-Scooby à la clé ! Jamais à la traine quand il s'agit de manger, son nom complet est en fait Scoobert Dooby Doo.</p>
         </div>
 
-        <div class="col-4" style="border:1px solid red">
+        <div class="col-4" style="text-align: right">
             <figure class="figure">
-                <img src="{{ asset('docs/img/' ~ persoso.image) }}" class="figure-img img-fluid rounded" alt="...">
-                <figcaption class="figure-caption">A caption for the above image.</figcaption>
+                <img src="{{ asset('docs/img/' ~ persoso.image) }}" class="figure-img img-fluid rounded" alt=" {{ persoso.prenom }} {{ persoso.nom }} ">
+                <figcaption class="figure-caption">{{ persoso.phrase }}</figcaption>
             </figure>
+
+            <ul class="list-unstyled">
+                <li class="media">
+                    <div class="card-style">
+                    <img class="mr-3 image-type" src="{{ asset('docs/img/' ~ persoso.typeId.name|lower ~ '.jpeg') }}" alt="{{ persoso.prenom ~ ' est de type ' ~ persoso.typeId.name }}">
+                    <div class="media-body">
+                    <h5 class="mt-0 mb-1">Type</h5>
+                    {{ persoso.typeId.name }}
+                    </div>
+                    </div>
+                </li>
+                <li class="media">
+                    <div class="card-style">
+                    {% if (persoso.amibff is same as(null)) %}
+                    {{ "" }}
+                    {% else %}
+                    <img class="mr-3 image-type" src="{{ asset('docs/img/' ~ persoso.amibff.name|lower ~ ('.jpeg') )}}" alt="{{ persoso.amibff.name ~ ' est le meilleur ami de ' ~ persoso.prenom }}">
+                    <div class="media-body">
+                    <h5 class="mt-0 mb-1">Meilleur ami</h5>
+                    {{ persoso.amibff.name }}
+                    {% endif %}
+                    </div>
+                    </div>
+                </li>
+            </ul>
+  
+    </div>
+
         </div>
 
         </div>

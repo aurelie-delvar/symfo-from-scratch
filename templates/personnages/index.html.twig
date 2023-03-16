@@ -21,13 +21,14 @@
             <div class="card-body">
             <h5 class="card-title">{{ perso.prenom ~ ' ' ~ perso.nom }}</h5>
             <h6 class="card-subtitle mb-2">{{ perso.surnom }}</h6>
-            <p class="card-text">Je suis un {{ perso.typeId.name ~ ' et mon poto sur c\'est '}}
+            <p class="font-italic">{{ perso.phrase }}</p>
+            {# <p class="card-text">Je suis un {{ perso.typeId.name ~ ' et mon poto sur c\'est '}}
             {% if (perso.amibff is same as(null)) %}
                {{ "N'a pas d'amis" }}
             {% else %}
                 {{ perso.amibff.name }}
             {% endif %}
-            </p>
+            </p> #}
             </div>
 
             </a>

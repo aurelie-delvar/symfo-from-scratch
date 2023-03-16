@@ -71,6 +71,11 @@ class Personnages
      */
     private $amibff;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $phrase;
+
     public function __construct()
     {
         $this->qualites = new ArrayCollection();
@@ -173,6 +178,18 @@ class Personnages
     public function setAmibff(?Amis $amibff): self
     {
         $this->amibff = $amibff;
+
+        return $this;
+    }
+
+    public function getPhrase(): ?string
+    {
+        return $this->phrase;
+    }
+
+    public function setPhrase(?string $phrase): self
+    {
+        $this->phrase = $phrase;
 
         return $this;
     }

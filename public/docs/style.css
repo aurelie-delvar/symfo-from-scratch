@@ -4,8 +4,7 @@ body {
 }
 
 .card {
-    background-color: #DE8135;
-    color : #8D5A9E;
+    background-color: #F4984F;
 }
 
 h1 {
@@ -19,5 +18,23 @@ a {
 
 #cardlink {
     text-decoration: none;
-    color : #8D5A9E;
+    color : #6F2791;
+}
+
+.logo {
+    height: 6rem;
+    width: 30rem;
+    margin: auto;
+    display: block;
+}
+
+.image-type {
+    height: 5rem;
+    max-width: 100%;
+}
+
+.card-style {
+    display: block;
+    float: right;
+    margin-left: 15px;
 }
