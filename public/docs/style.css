@@ -43,3 +43,7 @@ a {
     color: #6F2B90;
     background-color: #F49750;
 }
+
+.active {
+    color: #6F2B90; 
+}
