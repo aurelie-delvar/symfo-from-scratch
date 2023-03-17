@@ -5,16 +5,16 @@
 {% block body %}
     <h1 class="mt-3 mb-5">{{ personnage.prenom ~ ' ' ~ personnage.nom }}</h1>
 
-<div class="container"  style="border: 1px solid red">
+<div class="container">
 
-    <div class="row"  style="border: 1px solid red">
+    <div class="row">
 
-        <div class="col-4" style="text-align: right;">
-        <img src="{{ asset('docs/img/' ~ personnage.image) }}" style="max-width: 100%; display: block"/>
+        <div class="col-4">
+        <img src="{{ asset('docs/img/' ~ personnage.image) }}" style="float: right;"/>
         </div>
 
-        <div class="col-4" style="border: 1px solid red">
-        <table class="table" style="width: 50%;">
+        <div class="col-4">
+        <table class="table" style="width: 50%; margin: auto;">
             <tbody>
                 <tr>
                     <th>Id</th>
@@ -43,24 +43,21 @@
             </tbody>
         </table>
         </div>
-    </div>
 
-    <div style="margin: auto; display: inline">
-    <div class="row"  style="border: 1px solid red">
+        <div class="col-4">
+            <div class="col mt-3">
+            <a href="{{ path('app_backoffice_personnages_index') }}" class="btn btn-info" >Retour à l'accueil</a>
+            </div>
 
-        <div class="col mt-3">
-        <a href="{{ path('app_backoffice_personnages_index') }}" class="btn btn-info" >Retour à l'accueil</a>
+            <div class="col mt-3">
+            <a href="{{ path('app_backoffice_personnages_edit', {'id': personnage.id}) }}"  class="btn btn-info">Modifier</a>
+            </div>
+
+            <div class="col mt-3">
+            {{ include('backoffice/personnages/_delete_form.html.twig') }}
+            </div>
+
         </div>
-
-        <div class="col mt-3">
-        <a href="{{ path('app_backoffice_personnages_edit', {'id': personnage.id}) }}"  class="btn btn-info">Modifier</a>
-        </div>
-
-        <div class="col mt-3">
-        {{ include('backoffice/personnages/_delete_form.html.twig') }}
-        </div>
-
-    </div>
     </div>
 
 </div>
