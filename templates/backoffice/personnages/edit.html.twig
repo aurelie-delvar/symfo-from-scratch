@@ -5,9 +5,11 @@
 {% block body %}
     <h1 class="mt-3 mb-5">Modification d'un personnage</h1>
 
-    {{ include('backoffice/personnages/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('backoffice/personnages/_form.html.twig', {'button_label': 'Modification'}) }}
 
     <a href="{{ path('app_backoffice_personnages_index') }}" class="btn btn-info" >Retour à l'accueil</a>
-
+    
+    <div class="mt-3">
     {{ include('backoffice/personnages/_delete_form.html.twig') }}
+    </div>
 {% endblock %}
