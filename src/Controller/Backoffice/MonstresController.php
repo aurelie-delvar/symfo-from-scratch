@@ -5,10 +5,11 @@ namespace App\Controller\Backoffice;
 use App\Entity\Monstres;
 use App\Form\MonstresType;
 use App\Repository\MonstresRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/backoffice/monstres")
@@ -58,6 +59,8 @@ class MonstresController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="app_backoffice_monstres_edit", methods={"GET", "POST"})
+     * 
+     * @IsGranted("ROLE_ADMIN", message="Seuls les admins peuvent aller sur cette page.")
      */
     public function edit(Request $request, Monstres $monstre, MonstresRepository $monstresRepository): Response
     {
@@ -78,6 +81,8 @@ class MonstresController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_backoffice_monstres_delete", methods={"POST"})
+     * 
+     * @IsGranted("ROLE_ADMIN", message="Seuls les admins peuvent aller sur cette page.")
      */
     public function delete(Request $request, Monstres $monstre, MonstresRepository $monstresRepository): Response
     {

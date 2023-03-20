@@ -5,13 +5,15 @@ namespace App\Controller\Backoffice;
 use App\Entity\Personnages;
 use App\Form\Personnages1Type;
 use App\Repository\PersonnagesRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/backoffice/personnages")
+ * 
  */
 class PersonnagesController extends AbstractController
 {
@@ -58,6 +60,8 @@ class PersonnagesController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="app_backoffice_personnages_edit", methods={"GET", "POST"})
+     * 
+     * @IsGranted("ROLE_ADMIN", message="Seuls les admins peuvent aller sur cette page.")
      */
     public function edit(Request $request, Personnages $personnage, PersonnagesRepository $personnagesRepository): Response
     {
@@ -78,6 +82,8 @@ class PersonnagesController extends AbstractController
 
     /**
      * @Route("/{id}", name="app_backoffice_personnages_delete", methods={"POST"})
+     * 
+     * @IsGranted("ROLE_ADMIN", message="Seuls les admins peuvent aller sur cette page.")
      */
     public function delete(Request $request, Personnages $personnage, PersonnagesRepository $personnagesRepository): Response
     {

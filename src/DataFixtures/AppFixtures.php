@@ -48,6 +48,6 @@ class AppFixtures extends Fixture implements FixtureGroupInterface
 
     public static function getGroups(): array
     {
-        return ['tagada'];
+        return ['users'];
     }
 }
