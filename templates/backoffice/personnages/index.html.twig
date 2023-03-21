@@ -28,7 +28,10 @@
                 <td>{{ personnage.phrase }}</td>
                 <td>
                     <a href="{{ path('app_backoffice_personnages_show', {'id': personnage.id}) }}" class="btn btn-info">Voir</a>
+
+                    {% if is_granted("ROLE_ADMIN") %}
                     <a href="{{ path('app_backoffice_personnages_edit', {'id': personnage.id}) }}" class="btn btn-info">Modifier</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -40,4 +43,5 @@
     </table>
 
     <a href="{{ path('app_backoffice_personnages_new') }}" class="btn btn-info">Ajouter personnage</a>
+
 {% endblock %}

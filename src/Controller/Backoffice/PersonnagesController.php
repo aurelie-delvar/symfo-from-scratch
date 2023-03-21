@@ -29,6 +29,7 @@ class PersonnagesController extends AbstractController
 
     /**
      * @Route("/new", name="app_backoffice_personnages_new", methods={"GET", "POST"})
+     * 
      */
     public function new(Request $request, PersonnagesRepository $personnagesRepository): Response
     {

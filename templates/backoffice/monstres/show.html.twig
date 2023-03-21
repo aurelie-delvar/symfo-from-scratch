@@ -41,6 +41,7 @@
             <a href="{{ path('app_backoffice_monstres_index') }}"  class="btn btn-info">Retour à l'accueil</a>
             </div>
 
+            {% if is_granted("ROLE_ADMIN") %}
             <div class="col mt-3">
             <a href="{{ path('app_backoffice_monstres_edit', {'id': monstre.id}) }}"  class="btn btn-info">Modifier</a>
             </div>
@@ -48,6 +49,8 @@
             <div class="col mt-3">
             {{ include('backoffice/monstres/_delete_form.html.twig') }}
             </div>
+            {% endif %}
+            
         </div>
 
     </div>

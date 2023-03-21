@@ -64,6 +64,11 @@ class MonstresController extends AbstractController
      */
     public function edit(Request $request, Monstres $monstre, MonstresRepository $monstresRepository): Response
     {
+
+        if(!$this->isGranted("ROLE_ADMIN")) {
+            return $this->redirectToRoute("app_backoffice_monstres_index");
+        }
+
         $form = $this->createForm(MonstresType::class, $monstre);
         $form->handleRequest($request);
 
