@@ -60,10 +60,11 @@ class MonstresController extends AbstractController
     /**
      * @Route("/{id}/edit", name="app_backoffice_monstres_edit", methods={"GET", "POST"})
      * 
-     * @IsGranted("ROLE_ADMIN", message="Seuls les admins peuvent aller sur cette page.")
      */
     public function edit(Request $request, Monstres $monstre, MonstresRepository $monstresRepository): Response
     {
+
+        // @IsGranted("ROLE_ADMIN", message="Seuls les admins peuvent aller sur cette page.")
 
         if(!$this->isGranted("ROLE_ADMIN")) {
             return $this->redirectToRoute("app_backoffice_monstres_index");
@@ -87,10 +88,11 @@ class MonstresController extends AbstractController
     /**
      * @Route("/{id}", name="app_backoffice_monstres_delete", methods={"POST"})
      * 
-     * @IsGranted("ROLE_ADMIN", message="Seuls les admins peuvent aller sur cette page.")
      */
     public function delete(Request $request, Monstres $monstre, MonstresRepository $monstresRepository): Response
     {
+
+        //  @IsGranted("ROLE_ADMIN", message="Seuls les admins peuvent aller sur cette page.")
         if ($this->isCsrfTokenValid('delete'.$monstre->getId(), $request->request->get('_token'))) {
             $monstresRepository->remove($monstre, true);
         }

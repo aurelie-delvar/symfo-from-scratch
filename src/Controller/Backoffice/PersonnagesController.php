@@ -62,10 +62,10 @@ class PersonnagesController extends AbstractController
     /**
      * @Route("/{id}/edit", name="app_backoffice_personnages_edit", methods={"GET", "POST"})
      * 
-     * @IsGranted("ROLE_ADMIN", message="Seuls les admins peuvent aller sur cette page.")
      */
     public function edit(Request $request, Personnages $personnage, PersonnagesRepository $personnagesRepository): Response
     {
+        // @IsGranted("ROLE_ADMIN", message="Seuls les admins peuvent aller sur cette page.")
         $form = $this->createForm(Personnages1Type::class, $personnage);
         $form->handleRequest($request);
 
@@ -84,10 +84,10 @@ class PersonnagesController extends AbstractController
     /**
      * @Route("/{id}", name="app_backoffice_personnages_delete", methods={"POST"})
      * 
-     * @IsGranted("ROLE_ADMIN", message="Seuls les admins peuvent aller sur cette page.")
      */
     public function delete(Request $request, Personnages $personnage, PersonnagesRepository $personnagesRepository): Response
     {
+        // @IsGranted("ROLE_ADMIN", message="Seuls les admins peuvent aller sur cette page.")
         if ($this->isCsrfTokenValid('delete'.$personnage->getId(), $request->request->get('_token'))) {
             $personnagesRepository->remove($personnage, true);
         }

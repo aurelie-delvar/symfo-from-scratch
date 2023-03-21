@@ -19,7 +19,7 @@ class PersonnagesController extends AbstractController
     {
         $persos = $persorepo->findAll();
 
-        return $this->render('personnages/index.html.twig', [
+        return $this->render('frontoffice/personnages/index.html.twig', [
             'persos' => $persos,
         ]);
     }
@@ -33,7 +33,7 @@ class PersonnagesController extends AbstractController
     {
         $persoso = $persorepo->find($id);
 
-        return $this->render('personnages/show.html.twig', [
+        return $this->render('frontoffice/personnages/show.html.twig', [
             'persoso' => $persoso,
         ]);
     }
@@ -55,7 +55,7 @@ class PersonnagesController extends AbstractController
             return $this->redirectToRoute('app_personnages');
         }
 
-        return $this->renderForm('personnages/new.html.twig', [
+        return $this->renderForm('frontoffice/personnages/new.html.twig', [
             'form' => $form,
             'perso' => $perso,
         ]);

@@ -16,7 +16,7 @@ class MonstresController extends AbstractController
     {
         $monstres = $monstresRepository->findAll();
 
-        return $this->render('monstres/index.html.twig', [
+        return $this->render('frontoffice/monstres/index.html.twig', [
             'monstres' => $monstres,
         ]);
     }
