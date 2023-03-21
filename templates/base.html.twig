@@ -12,21 +12,27 @@
     <body>
     <div class="container">
 
-    {% dump(app.request.pathInfo) %}
-
     {% if (app.request.pathInfo) starts with '/backoffice' %} 
     <nav>
         <a href="{{ path('app_backoffice_personnages_index') }}"><img src="{{ asset('docs/img/logo.png') }}" class="logo" /></a>
-            <ul class="nav justify-content-center">
+            <ul class="nav justify-content-center mt-3">
                 <li class="nav-item">
-                    <a class="nav-link {{ (app.request.pathInfo) is same as('/backoffice/personnages/') ? 'active' : '' }}" href="{{ path('app_backoffice_personnages_index') }}">Les personnages</a>
+                    <a class="nav-link {{ (app.request.pathInfo) is same as('/backoffice/personnages/') ? 'btn btn-info' : '' }}" href="{{ path('app_backoffice_personnages_index') }}">Les personnages</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ (app.request.pathInfo) is same as('/backoffice/monstres/') ? 'active' : '' }}" href="{{ path('app_backoffice_monstres_index') }}">Les monstres</a>
+                    <a class="nav-link {{ (app.request.pathInfo) is same as('/backoffice/monstres/') ? 'btn btn-info' : '' }}" href="{{ path('app_backoffice_monstres_index') }}">Les monstres</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_personnages') }}">Aller au frontoffice</a>
+                    <a class="nav-link" href="{{ path('app_personnages') }}">Aller au frontoffice</a>
                 </li>
+                {% if app.user %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                </li>
+                <li class="nav-item">
+                    <p class="nav-link">Vous êtes connecté en tant que {{ app.user.roles[0][5:]|lower }}</p>
+                </li>
+                {% endif %}
             </ul>
     </nav>
 
@@ -34,12 +40,15 @@
     <nav>
         <a href="{{ path('app_personnages') }}"><img src="{{ asset('docs/img/logo.png') }}" class="logo" /></a>
 
-            <ul class="nav justify-content-center">
+            <ul class="nav justify-content-center mt-3">
                 <li class="nav-item">
-                    <a class="nav-link {{ (app.request.pathInfo) is same as('/monstres') ? 'active' : '' }}" href="{{ path('app_monstres') }}">Les monstres</a>
+                    <a class="nav-link {{ (app.request.pathInfo) is same as('/') ? 'btn btn-info' : '' }}" href="{{ path('app_personnages') }}">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ (app.request.pathInfo) is same as('/perso/nouveau') ? 'active' : '' }}" href="{{ path('app_new') }}">Ajouter un personnage</a>
+                    <a class="nav-link {{ (app.request.pathInfo) is same as('/monstres') ? 'btn btn-info' : '' }}" href="{{ path('app_monstres') }}">Les monstres</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ (app.request.pathInfo) is same as('/perso/nouveau') ? 'btn btn-info' : '' }}" href="{{ path('app_new') }}">Ajouter un personnage</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_backoffice_personnages_index') }}">Aller au backoffice</a>
