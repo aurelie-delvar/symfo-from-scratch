@@ -15,6 +15,7 @@
     {% if (app.request.pathInfo) starts with '/backoffice' %} 
     <nav>
         <a href="{{ path('app_backoffice_personnages_index') }}"><img src="{{ asset('docs/img/logo.png') }}" class="logo" /></a>
+        <h4 class="fixed-top">Vous êtes connecté(e) en tant que {{ app.user.roles[0][5:]|lower }}</h4>
             <ul class="nav justify-content-center mt-3">
                 <li class="nav-item">
                     <a class="nav-link {{ (app.request.pathInfo) is same as('/backoffice/personnages/') ? 'btn btn-info' : '' }}" href="{{ path('app_backoffice_personnages_index') }}">Les personnages</a>
@@ -33,9 +34,6 @@
                 {% if app.user %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
-                </li>
-                <li class="nav-item">
-                    <p class="nav-link">Vous êtes connecté(e) en tant que {{ app.user.roles[0][5:]|lower }}</p>
                 </li>
                 {% endif %}
             </ul>

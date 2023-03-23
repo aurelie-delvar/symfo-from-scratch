@@ -44,10 +44,14 @@ a {
     background-color: #F49750;
 }
 
-.nav-link {
+.nav-link, h4 {
     color: #6F2B90; 
 }
 
 a.nav-link:hover, p.nav-link:hover {
     color: #FEF103;
+}
+
+.fixed-top {
+    left: 70%;
 }
