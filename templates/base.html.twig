@@ -22,6 +22,11 @@
                 <li class="nav-item">
                     <a class="nav-link {{ (app.request.pathInfo) is same as('/backoffice/monstres/') ? 'btn btn-info' : '' }}" href="{{ path('app_backoffice_monstres_index') }}">Les monstres</a>
                 </li>
+                {% if is_granted("ROLE_ADMIN") %}
+                <li class="nav-item">
+                    <a class="nav-link {{ (app.request.pathInfo) is same as('/backoffice/user/') ? 'btn btn-info' : '' }}" href="{{ path('app_backoffice_user_index') }}">Les utilisateurs</a>
+                </li>
+                {% endif %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_personnages') }}">Aller au frontoffice</a>
                 </li>
@@ -30,7 +35,7 @@
                     <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
                 </li>
                 <li class="nav-item">
-                    <p class="nav-link">Vous êtes connecté en tant que {{ app.user.roles[0][5:]|lower }}</p>
+                    <p class="nav-link">Vous êtes connecté(e) en tant que {{ app.user.roles[0][5:]|lower }}</p>
                 </li>
                 {% endif %}
             </ul>
