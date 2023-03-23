@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Un nouveau coapin !{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un utilisateur</h1>
+
+    {{ include('backoffice/user/_form.html.twig') }}
+
+    <a href="{{ path('app_backoffice_user_index') }}" class="btn btn-info" >Retour à l'accueil</a>
+{% endblock %}

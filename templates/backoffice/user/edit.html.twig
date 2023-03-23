@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer{% endblock %}
+
+{% block body %}
+    <h1 class="mt-3 mb-5">Modification d'un utilisateur</h1>
+
+    {{ include('backoffice/user/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
+
+    <a href="{{ path('app_backoffice_user_index') }}" class="btn btn-info">Retour à l'accueil</a>
+
+    <div class="mt-3">
+    {{ include('backoffice/user/_delete_form.html.twig') }}
+    </div>
+{% endblock %}
