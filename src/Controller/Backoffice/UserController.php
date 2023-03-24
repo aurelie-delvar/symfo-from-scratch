@@ -50,7 +50,7 @@ class UserController extends AbstractController
                 return $this->redirectToRoute('app_backoffice_user_index', [], Response::HTTP_SEE_OTHER);
             }     
 
-            // $form->addError(new FormError("Les mots de passe ne correspondent pas."));
+            $form->addError(new FormError("Les mots de passe ne correspondent pas."));
         }
 
         return $this->renderForm('backoffice/user/new.html.twig', [

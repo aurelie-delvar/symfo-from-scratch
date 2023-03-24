@@ -1,10 +1,10 @@
 body {
     /* background-color: #0F3C86; */
-    background-color: #B7CC50;
+    background-color: #BBBF3B;
 }
 
 .card {
-    background-color: #F4984F;
+    background-color: #BF7245;
 }
 
 h1 {
@@ -18,14 +18,12 @@ a {
 
 #cardlink {
     text-decoration: none;
-    color : #6F2791;
+    color : #5C2B8C;
 }
 
 .logo {
     height: 6rem;
     width: 30rem;
-    margin: auto;
-    display: block;
 }
 
 .image-type {
@@ -40,18 +38,24 @@ a {
 }
 
 .table-list {
-    color: #6F2B90;
-    background-color: #F49750;
+    color: #5C2B8C;
+    background-color: #BF7245;
 }
 
-.nav-link, h4 {
-    color: #6F2B90; 
+.nav-link, h4, .right {
+    color: #055BA6; 
 }
 
 a.nav-link:hover, p.nav-link:hover {
-    color: #FEF103;
+    color: #5C2B8C;
 }
 
-.fixed-top {
-    left: 70%;
+.parent {
+    display: grid;
+    justify-items: center;
+}
+
+.right {
+    justify-self: right;
+    margin-right: 5rem;
 }
