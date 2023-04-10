@@ -2,16 +2,17 @@
 
 namespace App\Entity;
 
-use Symfony\Component\Validator\Constraints\NotBlank;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\PersonnagesRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PersonnagesRepository::class)
+ * @ORM\Table(name="personnages", indexes={@ORM\Index(columns={"nom", "prenom", "surnom"}, flags={"fulltext"})})
  */
 class Personnages
 {

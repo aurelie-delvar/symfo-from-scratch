@@ -39,6 +39,25 @@ class PersonnagesRepository extends ServiceEntityRepository
         }
     }
 
+    // création d'une méthode pour la barre de recherche
+    /**
+     * Recherche les personnages en fonction du formulaire
+     *
+     * @return void
+     */
+    public function search($mots) {
+        $query = $this->createQueryBuilder('p');
+        
+        // il faut que $mots ne soit pas nul
+        // la query telle qu'elle est documentée par Doctrine
+        if($mots != null) {
+            $query->where('MATCH_AGAINST(p.prenom, p.nom, p.surnom) AGAINST (:mots boolean)>0')
+                  ->setParameter('mots', $mots);
+        }
+
+        return $query->getQuery()->getResult();
+    }
+
 //    /**
 //     * @return Personnages[] Returns an array of Personnages objects
 //     */
