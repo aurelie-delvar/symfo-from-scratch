@@ -4,6 +4,7 @@ namespace App\Controller\Frontoffice;
 
 use App\Entity\Personnages;
 use App\Form\PersonnagesType;
+use App\Form\SearchCharacterType;
 use App\Repository\PersonnagesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,12 +16,25 @@ class PersonnagesController extends AbstractController
     /**
      * @Route("/", name="app_personnages")
      */
-    public function index(PersonnagesRepository $persorepo): Response
+    public function index(PersonnagesRepository $persorepo, Request $request): Response
     {
         $persos = $persorepo->findAll();
 
+        // je fais les manips habituelles sur le formulaire barre de recherche
+        $form = $this->createForm(SearchCharacterType::class);
+
+        $search = $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            // chercher les personnages correspondants aux mots-clés entrés par l'utilisateur
+            // on récupère en argument ce qui a été donné par l'utilisateur
+            $persos = $persorepo->search($search->get('mots')->getData());
+
+        }
+
         return $this->render('frontoffice/personnages/index.html.twig', [
             'persos' => $persos,
+            'form' => $form->createView(),
         ]);
     }
 
